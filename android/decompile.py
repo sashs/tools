@@ -1,6 +1,6 @@
 #!/usr/bin/env ipython2
 from androlyze import *
-from sys import argv
+from sys import argv, exit
 from os import makedirs
 from os.path import exists
 
@@ -10,6 +10,7 @@ def usage():
 def main():
     if len(argv) < 2:
         usage()
+        exit(0)
 
     apk = argv[1]
     output = apk[:-4] if apk.endswith('.apk') else apk
