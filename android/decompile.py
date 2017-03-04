@@ -1,5 +1,5 @@
-#!/usr/bin/env ipython2
-from androlyze import *
+#!/usr/bin/env python2
+from androguard.misc import *
 from sys import argv, exit
 from os import makedirs
 from os.path import exists
@@ -13,7 +13,7 @@ def main():
         exit(0)
 
     apk = argv[1]
-    output = apk[:-4] if apk.endswith('.apk') else apk
+    output = apk[:-4] if apk.endswith('.apk') or apk.endswith('.dex') else apk
     output += apk+'_decompiled'
     if len(argv) == 3:
         output = argv[2]
@@ -21,7 +21,10 @@ def main():
     if not exists(output):
         makedirs(output)
 
-    a, d, dx = AnalyzeAPK(apk)
+    if apk.endswith('.apk'):
+        a, d, dx = AnalyzeAPK(apk)
+    elif apk.endswith('.dex'):
+        d, dx = AnalyzeDex(apk)
 
     for cls in d.get_classes():
         name = cls.get_name()
