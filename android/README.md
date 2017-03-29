@@ -5,8 +5,7 @@ A little script, that decompiles all java classes which are contained in an apk 
 Dependencies
 ------------
   - [androguard](https://github.com/androguard/androguard)
-  - ipython2
 
 Usage
 -----
-    $ ipython2 decompile.py <apk-file> [<output dir>]
+    $ python2 decompile.py <apk-file> [<output dir>]
