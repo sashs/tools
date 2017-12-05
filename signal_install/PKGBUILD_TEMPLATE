@@ -2,7 +2,7 @@ pkgname=signal-desktop
 pkgver=1.0.40
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/WhisperSystems/Signal-Desktop#readme"
 license=('GPL')
 groups=('')
@@ -13,10 +13,6 @@ source_x86_64=("URL_VALUE")
 sha512sums_x86_64=('HASH_VALUE')
 
 package(){
-
-	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-
 	install -D -m644 "/opt/Signal/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
 }
