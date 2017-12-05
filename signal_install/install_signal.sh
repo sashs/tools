@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 CWD=$(pwd)
 DIR="signal_$(date +'%s')"
 TEMP_PATH="/tmp/$DIR"
@@ -25,4 +25,5 @@ SED="s/URL_VALUE/file:\/\/\/tmp\/$DIR\/$FILE_NAME/"
 sed -i -e "$SED" PKGBUILD
 
 cp $CWD/signal-desktop.install $TEMP_PATH
+sudo pacman -S gconf libappindicator-gtk2 libnotify libxss libxtst nss
 makepkg && sudo pacman -U *.pkg.tar.xz
